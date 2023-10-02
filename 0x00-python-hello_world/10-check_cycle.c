@@ -8,16 +8,16 @@
  */
 int check_cycle(listint_t *list)
 {
-	listint_t jumper1 = *list;
-	listint_t jumper2 = *list;
+	listint_t *jumper1 = list;
+	listint_t *jumper2 = list;
 
 	if (!list)
 		return (0);
 
-	while (jumper1 && jumper2 && jumper2.next)
+	while (jumper1 && jumper2 && jumper2->next)
 	{
-		jumper1 = jumper1.next;
-		jumper2 = jumper2.next.next;
+		jumper1 = jumper1->next;
+		jumper2 = jumper2->next->next;
 		if (jumper1 == jumper2)
 			return (1);
 	}

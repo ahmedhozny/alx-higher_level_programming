@@ -7,11 +7,12 @@ class Node:
     """Represent a node in a singly-linked list."""
     def __init__(self, data, next_node=None):
         """
-        Initialize a Node with the given data and an optional reference to the next Node.
+        Initialize node with the given data and
+        an optional reference to the next Node.
 
         Args:
             data (int): The data to be stored in the Node.
-            next_node (Node, optional): The next Node in the linked list. Defaults to None.
+            next_node (Node): The next Node in the list. Defaults to None.
         """
         self.data = data
         self.next_node = next_node
@@ -64,9 +65,14 @@ class SinglyLinkedList:
                 cur = cur.next_node
             if prev is not None:
                 prev.next_node = node
+            else:
+                self.__head = node
             node.next_node = cur
 
     def __str__(self):
+        """
+        Return a string representation of the linked list.
+        """
         cur = self.__head
         my_str = ""
         while cur is not None:

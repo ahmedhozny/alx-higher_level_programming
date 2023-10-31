@@ -1,0 +1,43 @@
+The ``0-add_integer`` module
+======================
+
+Using ``add_integer``
+-------------------
+
+Importing the function from the module:
+    >>> add_integer = __import__('0-add_integer').add_integer
+
+Checking addition:
+    >>> add_integer(1, 2)
+    3
+
+Checking addition of positive and negative numbers:
+    >>> add_integer(100, -2)
+    98
+
+Checking addition with no second argument:
+    >>> add_integer(2)
+    100
+
+Checking with float and negative number:
+    >>> add_integer(100.3, -2)
+    98
+
+Checking addition with string error:
+    >>> add_integer(5, "School")
+    Traceback (most recent call last):
+    TypeError: b must be an integer
+
+Checking addition of None:
+    >>> add_integer(None)
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+Checking addition of 2 string arguments:
+    >>> add_integer("bla bla", "blabla")
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+Checking addition of 2 floats:
+    >>> add_integer(1.5 , 1.5)
+    2

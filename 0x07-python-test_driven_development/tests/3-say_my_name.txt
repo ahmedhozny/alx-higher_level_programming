@@ -1,0 +1,30 @@
+The ``3-say_my_name`` module
+======================
+
+Using ``say_my_name``
+-------------------
+
+Importing the function from the module:
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+
+When both first_name and last_name are the same:
+    >>> say_my_name("Ahmed", "Ahmed")
+    My name is Ahmed Ahmed
+
+When first_name and last_name are different:
+    >>> say_my_name("Ahmed", "Mohamed")
+    My name is Ahmed Mohamed
+
+When first_name is an integer, should raise a TypeError:
+    >>> say_my_name(1, "Ahmed")
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+When last_name is an integer, should raise a TypeError:
+    >>> say_my_name("Ahmed", 1)
+    Traceback (most recent call last):
+    TypeError: last_name must be a string
+
+When only the first_name is provided:
+    >>> say_my_name("John")
+    My name is John

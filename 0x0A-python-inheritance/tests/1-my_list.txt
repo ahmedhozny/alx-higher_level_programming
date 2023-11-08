@@ -5,7 +5,7 @@ Using ``print_sorted``
 -------------------
 
 Importing the function from the module:
-      >>> print_sorted = __import__('1-my_list').print_sorted
+      >>> MyList = __import__('1-my_list').MyList
 
 Checking that MyList inherits from list:
 	  >>> issubclass(MyList, list)

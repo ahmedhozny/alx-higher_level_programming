@@ -1,9 +1,15 @@
 #!/usr/bin/python3
 
+"""Defines the square module."""
+
+
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
+    """
+    Square class, let's create squares.
+    """
     def __init__(self, size, x=0, y=0, id=None):
         """
         Initialise a new Square.

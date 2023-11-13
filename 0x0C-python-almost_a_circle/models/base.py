@@ -75,7 +75,9 @@ class Base:
             if list_objs is None:
                 file.write("[]")
             else:
-                file.write(Base.to_json_string([o.to_dictionary() for o in list_objs]))
+                file.write(Base.to_json_string(
+                    [o.to_dictionary() for o in list_objs])
+                )
 
     @classmethod
     def load_from_file(cls):

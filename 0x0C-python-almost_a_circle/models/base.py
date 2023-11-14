@@ -131,7 +131,7 @@ class Base:
         """
         try:
             with open(cls.__name__ + ".csv", "r") as file:
-                dummy = cls.create_dummy_object()
+                dummy = cls.create_dummy_object(0)
                 if dummy is None:
                     return None
                 field_names = dummy.to_dictionary()
@@ -143,10 +143,10 @@ class Base:
             return []
 
     @classmethod
-    def create_dummy_object(cls):
+    def create_dummy_object(cls, id=None):
         if cls.__name__ == "Rectangle":
-            return cls(1, 1, id=0)
+            return cls(1, 1, id=id)
         elif cls.__name__ == "Square":
-            return cls(1, id=0)
+            return cls(1, id=id)
         else:
             return None

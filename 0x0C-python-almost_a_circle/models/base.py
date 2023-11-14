@@ -3,6 +3,7 @@
 """Defines the base module."""
 
 import json
+import csv
 
 
 class Base:
@@ -101,11 +102,51 @@ class Base:
             **dictionary (dict): Key/value pairs of attributes.
         """
         if dictionary is not None and len(dictionary) > 0:
-            if cls.__name__ == "Rectangle":
-                obj = cls(1, 1, 1)
-            elif cls.__name__ == "Square":
-                obj = cls(1, 1)
-            else:
+            obj = cls.create_dummy_object()
+            if obj is None:
                 return None
             obj.update(**dictionary)
             return obj
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        saves lists to objects to the perspective class file (csv)
+
+        Args:
+            list_objs (list): list of objects.
+        """
+        with open(cls.__name__ + ".csv", "w") as file:
+            if list_objs is None:
+                file.write("[]")
+            else:
+                to_csv = [o.to_dictionary() for o in list_objs]
+                writer = csv.DictWriter(file, fieldnames=to_csv[0])
+                writer.writerows(to_csv)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        loads perspective class file and creates objects (csv)
+        """
+        try:
+            with open(cls.__name__ + ".csv", "r") as file:
+                dummy = cls.create_dummy_object()
+                if dummy is None:
+                    return None
+                field_names = dummy.to_dictionary()
+                list_dicts = csv.DictReader(file, fieldnames=field_names)
+                list_dicts = [dict([k, int(v)] for k, v in d.items())
+                              for d in list_dicts]
+                return [cls.create(**d) for d in list_dicts]
+        except IOError:
+            return []
+
+    @classmethod
+    def create_dummy_object(cls):
+        if cls.__name__ == "Rectangle":
+            return cls(1, 1, id=0)
+        elif cls.__name__ == "Square":
+            return cls(1, id=0)
+        else:
+            return None

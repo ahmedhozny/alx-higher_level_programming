@@ -19,9 +19,9 @@ if __name__ == "__main__":
 
     cur.execute(query, (sys.argv[4],))
     rows = cur.fetchall()
-    res = ""
+    res = []
     for row in rows:
-        res += str(row[0]) + ", "
-    print(res.rstrip())
+        res.append(row[0])
+    print(*res, sep=", ")
     cur.close()
     db.close()
